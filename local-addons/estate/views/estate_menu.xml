@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Root Menu -->
-    <menuitem name="Real Estate" id="menu_root_estate" sequence="10"/>
+    <menuitem name="Real Estate" id="root_menu_estate" />
 
     <!-- Submenu under Root -->
-    <menuitem id="menu_property_add" name="Add" parent="menu_root_estate" sequence="20"/>
+    <menuitem id="add_menu" name="Add" parent="root_menu_estate" />
 
     <!-- Action Menu under Submenu -->
     <menuitem id="menu_property"
-              name="Properties"
-              parent="menu_property_add"
-              action="action_property"
-              sequence="30"/>
-    <menuitem id="menu_property_save" name="Save" parent="menu_property" sequence="40"/>
+              name="Add Properties"
+              parent="add_menu"
+              action="property_action"
+              />
 </odoo>

@@ -27,6 +27,7 @@
         </group>
       </form>
     </field>
+
   </record>
 
   <record id="wb_student_action" model="ir.actions.act_window">
@@ -46,4 +47,9 @@
             parent="wb_student_sub_root_menu"
 
             />
+
+  <rec
+
 </odoo>
+
+

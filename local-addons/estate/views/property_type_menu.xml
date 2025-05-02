@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="root_menu_proper_type" name="Property Type"/>
+    <menuitem id="add_menu" name="Add Type" parent="root_menu_proper_type"/>
+       <menuitem id="property_type_add_menu"
+              name="Add Types"
+              parent="add_menu"
+              action="property_type_action"
+              />
+</odoo>
