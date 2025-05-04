@@ -13,11 +13,6 @@ class Property(models.Model):
     type_id = fields.Many2one("estate.property.type", string="Property Type")
     tag_id = fields.Many2many(comodel_name="estate.property.tags", string="Tags")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
-    # owner_id = fields.Many2one(
-    #     comodel_name="res.partner",
-    #     string="Owner",
-    #     default=lambda self: self.env.user.partner_id,
-    # )
     name = fields.Char(string="Name", required=True)
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")

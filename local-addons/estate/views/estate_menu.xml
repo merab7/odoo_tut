@@ -4,12 +4,17 @@
     <menuitem name="Real Estate" id="root_menu_estate" />
 
     <!-- Submenu under Root -->
-    <menuitem id="add_menu" name="Add" parent="root_menu_estate" />
+    <menuitem id="add_menu" name="Property" parent="root_menu_estate" action="property_action" />
 
-    <!-- Action Menu under Submenu -->
-    <menuitem id="menu_property"
-              name="Add Properties"
-              parent="add_menu"
-              action="property_action"
-              />
+    <menuitem id="property_tags_add_menu"
+              name="Tags"
+              parent="root_menu_estate"
+              action="property_tag_action"
+    />
+
+    <menuitem id="property_type_add_menu"
+              name="Types"
+              parent="root_menu_estate"
+              action="property_type_action"
+    />
 </odoo>

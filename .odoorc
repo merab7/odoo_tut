@@ -1,5 +1,0 @@
-
-[options]
-admin_passwd = $pbkdf2-sha512$600000$xbg3xnjvnbNWypkTonRuTQ$XUNkNu2yhU9bka5K7SJjGq3Lccb6CWK65FeF77GyyMJGlpPKhOtAANdjpOr/gjqQ7pJTQXbwHuqvRfB.kv3jlw
-addons_path = /home/merab/Documents/odoo_tut/odoo/addons, /home/merab/Documents/odoo_tut/odoo/odoo/addons, /home/merab/Documents/odoo_tut/local-addons
-
