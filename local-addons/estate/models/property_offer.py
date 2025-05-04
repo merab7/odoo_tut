@@ -12,3 +12,5 @@ class PropertyOffer(models.Model):
     offer_status = fields.Selection(
         [("active", "Active"), ("expired", "Expired")], string="Offer Status"
     )
+    validity = fields.Integer(string="Validity")
+    deadline = fields.Date(string="Deadline")

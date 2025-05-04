@@ -30,7 +30,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="tag_id"/>
+                        <field name="tag_id" widget="many2many_tags"/>
                         <group>
                          <field name="postcode"/>
                             <field name="type_id"/>
@@ -42,14 +42,39 @@
                             <field name="best_offer"/>
                             <field name="selling_price"/>
                         </group>
-                             <field name="offer_ids">
-                                <tree>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                            </group>
+
+                        </page>
+                        <page name="offers">
+                            <field name="offer_ids">
+                                <tree editable="button">
                                     <field name="offer_name"/>
                                     <field name="offer_price"/>
                                     <field name="offer_status"/>
+                                    <field name="validity"/>
+                                    <field name="deadline"/>
                                 </tree>
-                             </field>
-                    </group>
+                            </field>
+                        </page>
+
+                        <page name="Other Information">
+                          <group>
+                              <field name="sales_id"/>
+                              <field name="buyer_id"/>
+                          </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

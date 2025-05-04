@@ -1,6 +1,3 @@
-from email.policy import default
-
-from dateutil.utils import today
 from datetime import date, timedelta
 from odoo import fields, models
 from odoo.tools import start_of
@@ -39,3 +36,5 @@ class Property(models.Model):
         ],
         default="North",
     )
+    sales_id = fields.Many2one('res.users', string="Salesman")
+    buyer_id = fields.Many2one("res.partner", string="Buyer")
