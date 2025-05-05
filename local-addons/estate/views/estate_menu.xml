@@ -17,4 +17,10 @@
               parent="root_menu_estate"
               action="property_type_action"
     />
+
+    <menuitem id="property_offer_add_menu"
+              name="Offers"
+              parent="root_menu_estate"
+              action="property_offer_action"
+    />
 </odoo>

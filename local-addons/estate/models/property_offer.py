@@ -8,6 +8,15 @@ class PropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Property Offer"
 
+    @api.depends("property_id","partner_id")
+    def _compute_name(self):
+        for record in self:
+            if record.partner_id and record.property_id:
+                record.name = f"{record.partner_id.name} - {record.property_id.name}"
+            else:
+                record.name = False
+
+    name = fields.Char(string="Description", compute='_compute_name')
     partner_id = fields.Many2one("res.partner", string="Partner")
     property_id = fields.Many2one("estate.property", string="Property")
     offer_name = fields.Char(string="Offer Name", required=True)

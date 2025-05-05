@@ -7,6 +7,7 @@
         "views/property_type.xml",
         "views/property_tags_view.xml",
         "views/estate_property_views.xml",
+        "views/property_offer_view.xml",
         "views/estate_menu.xml",
 
         #Date files

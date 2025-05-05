@@ -10,6 +10,16 @@ class Property(models.Model):
     tag_id = fields.Many2many(comodel_name="estate.property.tags", string="Tags")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
     name = fields.Char(string="Name", required=True)
+    state = fields.Selection(
+        [
+            ("new", "New"),
+            ("received", "Offer Received"),
+            ("accepted", "Offer Accepted"),
+            ("sold", "Sold"),
+            ("cancel", "Cancelled")
+        ],
+        default="new", string="State"
+    )
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
     data_availability = fields.Date(
@@ -32,6 +42,19 @@ class Property(models.Model):
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.garden_area + record.living_area
+
+    def action_sold(self):
+        self.state = "sold"
+    def action_cancel(self):
+        self.state = "cancel"
+
+    @api.depends("offer_ids")
+    def _compute_offer_count(self):
+        for record in self:
+            record.offer_count = len(record.offer_ids)
+
+    offer_count = fields.Integer(string="Offer count", compute='_compute_offer_count')
+
 
     total_area = fields.Integer(string="Total Area", compute="_compute_total_area")
     garden_orientation = fields.Selection(
