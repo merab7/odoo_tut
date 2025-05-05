@@ -44,8 +44,15 @@ class Property(models.Model):
         default="North",
     )
     sales_id = fields.Many2one('res.users', string="Salesman")
-    buyer_id = fields.Many2one("res.partner", string="Buyer")
+    buyer_id = fields.Many2one("res.partner", string="Buyer", domain="[('is_company', '=', True)]")
+    """
+    Related Field Usage Guidelines:
+    1. Field name must reference the target model to establish the link
+    2. Field must be defined in the current model
+    3. Field must have a many2one relationship with the target model
 
+    Example:
+    partner_id = fields.Many2one('res.partner', string='Partner')
+    """
 
-
-
+    phone = fields.Char(string="Phone", related="buyer_id.phone")

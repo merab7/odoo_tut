@@ -63,10 +63,10 @@
                                 <tree editable="button">
                                     <field name="offer_name"/>
                                     <field name="offer_price"/>
-                                    <field name="offer_status"/>
                                     <field name="creation_date"/>
                                     <field name="validity"/>
                                     <field name="deadline"/>
+                                    <field name="offer_status"/>
                                 </tree>
                             </field>
                         </page>
@@ -75,6 +75,7 @@
                           <group>
                               <field name="sales_id"/>
                               <field name="buyer_id"/>
+                              <field name="phone"/>
                           </group>
                         </page>
                     </notebook>
