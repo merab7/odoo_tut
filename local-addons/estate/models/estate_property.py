@@ -1,6 +1,5 @@
 from datetime import date, timedelta
-from odoo import fields, models
-from odoo.tools import start_of
+from odoo import fields, models, api
 
 
 class Property(models.Model):
@@ -26,7 +25,15 @@ class Property(models.Model):
     facades = fields.Integer(string="Facades")
     garage = fields.Boolean(string="Garage", default=False)
     garden = fields.Boolean(string="Garden", default=False)
+
     garden_area = fields.Integer(string="Garden Area")
+
+    @api.depends("garden_area", "living_area")
+    def _compute_total_area(self):
+        for record in self:
+            record.total_area = record.garden_area + record.living_area
+
+    total_area = fields.Integer(string="Total Area", compute="_compute_total_area")
     garden_orientation = fields.Selection(
         [
             ("North", "north"),
@@ -38,3 +45,7 @@ class Property(models.Model):
     )
     sales_id = fields.Many2one('res.users', string="Salesman")
     buyer_id = fields.Many2one("res.partner", string="Buyer")
+
+
+
+

@@ -29,7 +29,7 @@
     </record>
 
     <record id="property_tag_action" model="ir.actions.act_window">
-        <field name="name">Property Type</field>
+        <field name="name">Property Tags</field>
         <field name="res_model">estate.property.tags</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="estate_property_tags_tree_view"/>

@@ -52,7 +52,9 @@
                                 <field name="facades"/>
                                 <field name="garage"/>
                                 <field name="garden"/>
+                                <field name="garden_orientation"/>
                                 <field name="garden_area"/>
+                                <field name="total_area"/>
                             </group>
 
                         </page>
@@ -62,6 +64,7 @@
                                     <field name="offer_name"/>
                                     <field name="offer_price"/>
                                     <field name="offer_status"/>
+                                    <field name="creation_date"/>
                                     <field name="validity"/>
                                     <field name="deadline"/>
                                 </tree>
