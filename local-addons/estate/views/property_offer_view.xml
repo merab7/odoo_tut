@@ -24,10 +24,8 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="offer_price"/>
-                            <field name="offer_status"/>
-                            <field name="partner_id"/>
-                            <field name="property_id"/>
+                            <field name="offer_name"/>
+                            <field name="offer_price"/> <field name="offer_status"/> <field name="partner_id"/> <field name="property_id"/>
                         </group>
                         <group>
                             <field name="creation_date"/>

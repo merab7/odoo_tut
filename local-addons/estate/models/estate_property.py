@@ -35,27 +35,8 @@ class Property(models.Model):
     facades = fields.Integer(string="Facades")
     garage = fields.Boolean(string="Garage", default=False)
     garden = fields.Boolean(string="Garden", default=False)
-
-    garden_area = fields.Integer(string="Garden Area")
-
-    @api.depends("garden_area", "living_area")
-    def _compute_total_area(self):
-        for record in self:
-            record.total_area = record.garden_area + record.living_area
-
-    def action_sold(self):
-        self.state = "sold"
-    def action_cancel(self):
-        self.state = "cancel"
-
-    @api.depends("offer_ids")
-    def _compute_offer_count(self):
-        for record in self:
-            record.offer_count = len(record.offer_ids)
-
+    garden_area = fields.Integer(string="Garden Area", default=0)
     offer_count = fields.Integer(string="Offer count", compute='_compute_offer_count')
-
-
     total_area = fields.Integer(string="Total Area", compute="_compute_total_area")
     garden_orientation = fields.Selection(
         [
@@ -79,3 +60,34 @@ class Property(models.Model):
     """
 
     phone = fields.Char(string="Phone", related="buyer_id.phone")
+
+    @api.depends("garden_area", "living_area")
+    def _compute_total_area(self):
+        for record in self:
+            record.total_area = record.garden_area + record.living_area
+
+    def action_sold(self):
+        self.state = "sold"
+
+    def action_cancel(self):
+        self.state = "cancel"
+
+    @api.depends("offer_ids")
+    def _compute_offer_count(self):
+        for record in self:
+            record.offer_count = len(record.offer_ids)
+
+
+    def action_property_view_offers(self):
+        return {
+            'type': "ir.actions.act_window",
+            'name': f'{self.name}-Offers',
+            'domain': [('property_id', '=', self.id)],
+            'view_mode':'tree',
+            'res_model': 'estate.property.offer',
+        }
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        if not self.garden:
+            self.garden_area = 0
+
